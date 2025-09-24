@@ -1,70 +1,60 @@
-# Mini LMS — Demo Project
+# Mini LMS
 
+A mini Learning Management System built with React frontend and Node.js backend.
 
-## 🚀 Features
-- View list of courses
-- Open a course → see its modules
-- Toggle module completion with checkboxes
-- Progress bar updates and persists to database
+## Features
 
----
+- Course listing and management
+- Module viewing with progress tracking
+- User progress tracking across courses
+- RESTful API with SQLite database
 
-## 🛠 Tech Stack
-- **Frontend:** React + Vite
-- **Backend:** Node.js + Express
-- **Database:** SQLite (via better-sqlite3)
+## Tech Stack
 
----
+**Frontend:**
+- React 18
+- Vite
+- Modern CSS
 
-## 📂 Data Model
-- **users**(id, name, email)
-- **courses**(id, title, description)
-- **modules**(id, course_id FK, title, order_index)
-- **progress**(id, user_id FK, module_id FK, status ENUM, UNIQUE(user_id, module_id))
+**Backend:**
+- Node.js
+- Express.js
+- SQLite with better-sqlite3
+- RESTful API
 
----
+## Setup
 
-## 🔌 API Endpoints
-- `GET /api/courses` → list courses
-- `GET /api/courses/:id/modules` → list modules in a course
-- `GET /api/courses/:id/progress/:userId` → progress info
-- `POST /api/progress` → update module status
+### Backend Setup
 
----
-
-## 💻 Getting Started
-
-### Backend
 ```bash
-cd backend
+cd server
 npm install
-npm run db:reset   # reset and seed the database
-npm run dev        # start server at http://localhost:4000
+npm run db:reset  # Initialize database with seed data
+npm run dev       # Start development server
 ```
 
-### Frontend
+Backend runs on `http://localhost:4000`
+
+### Frontend Setup
+
 ```bash
-cd frontend
+cd client/mini-lms
 npm install
-npm run dev        # start frontend at http://localhost:5173
+npm run dev       # Start development server
 ```
 
----
+Frontend runs on `http://localhost:5173`
 
-## 🎬 Demo Script
-1. Open Courses page → see list of seeded courses.
-2. Open a course → view its modules.
-3. Toggle completion → progress bar updates instantly.
-4. Refresh page → progress persists from DB.
+## API Endpoints
 
----
+- `GET /api/courses` - Get all courses
+- `GET /api/courses/:id/modules` - Get modules for a course
+- `GET /api/courses/:id/progress/:userId` - Get user progress for a course
+- `POST /api/progress` - Update user progress
 
-## 🙅‍♂️ Non-Goals
-- No authentication
-- No instructor/admin features
-- No quizzes or uploads
+## Database Schema
 
----
-
-## 📌 Notes
-This is a **demo project** designed for interview purposes, not production use.
+- **users**: User information
+- **courses**: Course details
+- **modules**: Course modules/lessons
+- **progress**: User progress tracking
